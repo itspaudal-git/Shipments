@@ -13,8 +13,8 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 // Reference to the "expected" and "scanned" nodes in the Firebase database
-const expectedRef = firebase.database().ref('barcodes/expected');
-const scannedRef = firebase.database().ref('barcodes/scanned');
+const expectedRef = firebase.database().ref('Shipments/Data');
+const scannedRef = firebase.database().ref('Shipments/Scanned');
 
 // Update the "Total" label with the total number of expected barcodes
 expectedRef.once('value').then(snapshot => {
