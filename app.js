@@ -18,7 +18,7 @@ const db = getDatabase(app);
 
 // Get a list of expected barcodes from your database
 async function getExpectedBarcodes(db) {
-  const expectedRef = ref(db, 'Shipments/Data');
+  const expectedRef = ref(db, 'Data');
   const expectedSnapshot = await get(expectedRef);
   const expectedList = Object.keys(expectedSnapshot.val() || {});
   return expectedList;
@@ -26,7 +26,7 @@ async function getExpectedBarcodes(db) {
 
 // Get the number of scanned barcodes from your database
 function getScannedCount(db) {
-  const scannedRef = ref(db, 'Shipments/Scanned');
+  const scannedRef = ref(db, 'Scanned');
   onValue(scannedRef, (snapshot) => {
     const scannedCount = snapshot.numChildren();
     document.getElementById('scanned').innerText = scannedCount;
