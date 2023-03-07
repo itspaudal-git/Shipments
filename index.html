@@ -1,29 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Tovala</title>
-	<link rel="stylesheet" href="style.css">
+  <title>Tovala</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<div class="container">
-		<h1>Tovala</h1>
-		<label for="barcode">Scan Barcode:</label>
-		<input type="text" id="barcode" name="barcode">
-		<div class="labels">
-			<label>Total Shipment:</label>
-			<span id="total"></span>
-			<label>Scanned:</label>
-			<span id="scanned"></span>
-		</div>
-		<button id="shipment-data-button">View Shipment Data</button>
-		<div id="shipment-data"></div>
-	</div>
-<!-- Firebase SDK -->
-<script src="https://www.gstatic.com/firebasejs/9.6.5/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.5/firebase-database.js"></script>
+  <div class="container">
+    <h1>Tovala</h1>
+    <label for="Tracking Numbers">Scan Barcode:</label>
+    <input type="text" id="barcode" name="barcode">
+    <button type="submit" id="barcode-submit">Submit</button>
+    <div class="labels">
+      <label>Total Shipment:</label>
+      <span id="total"></span>
+      <label>Scanned:</label>
+      <span id="scanned"></span>
+    </div>
+    <button id="shipment-data-button">View Shipment Data</button>
+    <div id="shipment-data"></div>
+  </div>
 
-<!-- Your app's JavaScript -->
-<script src="app.js"></script>
-
-</body>
-</html>
+</body>  
+<script src="https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js"></script>
+<script src="./app.js"></script>
