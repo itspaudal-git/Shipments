@@ -66,15 +66,16 @@ firebase.database().ref('Data').on('value', function(snapshot) {
   snapshot.forEach(function(childSnapshot) {
     var eachnode = childSnapshot.val();
     var facility = eachnode.Facility;
-    if (!uniqueFacilities.has(facility)) { // check if facility is already in the set
-      uniqueFacilities.add(facility); // add facility to set if it's unique
+    if (facility && !uniqueFacilities.has(facility.trim())) { // check if facility is not blank and not already in the set
+      uniqueFacilities.add(facility.trim()); // add facility to set if it's unique
       var optionElement = document.createElement('option');
-      optionElement.value = facility;
-      optionElement.text = facility;
+      optionElement.value = facility.trim();
+      optionElement.text = facility.trim();
       locationSelectElement.appendChild(optionElement);
     }
   });
 });
+
 
 // Retrieve the list of terms from Firebase, ordered by 'Term' value
 firebase.database().ref('Data').on('value', function(snapshot) {
@@ -84,33 +85,45 @@ firebase.database().ref('Data').on('value', function(snapshot) {
   snapshot.forEach(function(childSnapshot) {
     var eachnode = childSnapshot.val();
     var term = eachnode.Term;
-    if (!uniqueTerms.has(term)) { // check if term is already in the set
+    if (term && term.trim() !== '' && !uniqueTerms.has(term)) { // check if term is defined, not blank, and unique
       uniqueTerms.add(term); // add term to set if it's unique
-      var optionElement = document.createElement('option');
-      optionElement.value = term;
-      optionElement.text = term;
-      selectElement.appendChild(optionElement);
     }
+  });
+  // convert set to array, sort in reverse order, and append sorted options to select element
+  var termArray = Array.from(uniqueTerms).sort().reverse();
+  termArray.forEach(function(term) {
+    var optionElement = document.createElement('option');
+    optionElement.value = term;
+    optionElement.text = term;
+    selectElement.appendChild(optionElement);
+
   });
 });
 
-// Retrieve the list of terms from Firebase, ordered by 'Date' value
+// Retrieve the list of dates from Firebase, ordered by 'Date' value
 firebase.database().ref('Data').on('value', function(snapshot) {
   var dateSelectElement = document.getElementById('date');
   dateSelectElement.innerHTML = ''; // clear existing options
-  var uniquedate = new Set(); // create a set to hold unique dates
+  var uniqueDates = new Set(); // create a set to hold unique dates
   snapshot.forEach(function(childSnapshot) {
     var eachnode = childSnapshot.val();
     var date = eachnode.Date;
-    if (!uniquedate.has(date)) { // check if date is already in the set
-      uniquedate.add(date); // add date to set if it's unique
-      var optionElement = document.createElement('option');
-      optionElement.value = date;
-      optionElement.text = date;
-      dateSelectElement.appendChild(optionElement);
+    if (date && !uniqueDates.has(date)) { // check if date is defined and not already in the set
+      uniqueDates.add(date); // add date to set if it's unique
     }
   });
+  // convert set to array, sort in reverse order, and append sorted options to select element
+  var dateArray = Array.from(uniqueDates).sort().reverse();
+  dateArray.forEach(function(date) {
+    var optionElement = document.createElement('option');
+    optionElement.value = date;
+    optionElement.text = date;
+    dateSelectElement.appendChild(optionElement);
+    
+  });
 });
+
+
 
 
 
