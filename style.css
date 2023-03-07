@@ -46,21 +46,21 @@ input[type=text] {
 form {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+	align-items: flex-start; /* change align-items to flex-start to align the form items to the left */
 	margin-top: 20px;
-  }
-  
-  .form-group {
+}
+
+.form-group {
 	margin-bottom: 20px;
-  }
-  
-  label {
+}
+
+label {
 	display: block;
 	font-size: 1.5em;
 	margin-bottom: 5px;
-  }
-  
-  input[type=text], input[type=date], input[type=number] {
+}
+
+input[type=text], input[type=number] {
 	padding: 10px;
 	font-size: 1.2em;
 	border: none;
@@ -69,18 +69,29 @@ form {
 	width: 100%;
 	max-width: 400px;
 	margin: 0 auto;
-  }
-  
-  input[type=submit] {
+}
+
+input[type=date]{
+	padding: 10px;
+	font-size: 1.2em;
+	border: none;
+	border-radius: 5px;
+	box-shadow: 0px 2px 5px rgba(146, 16, 16, 0.25);
+	width: 100%;
+	max-width: 120px;
+	margin: 0 auto;
+	text-align: left;
+}
+
+input[type=submit] {
 	background-color: #4CAF50;
 	color: white;
 	padding: 10px 20px;
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;
-  }
-  
-  button[type=submit]:hover {
+}
+
+button[type=submit]:hover {
 	background-color: #3e8e41;
-  }
-  
+}
