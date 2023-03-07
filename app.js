@@ -1,4 +1,10 @@
-
+import('./module.js')
+.then(module => {
+  // Use the imported module here
+})
+.catch(error => {
+  // Handle the error here
+});  
 const firebaseConfig = {
   apiKey: "AIzaSyBvjBF8oP9hhaorrsLU8pr2prCAmS7eXmg",
   authDomain: "shipments-169d4.firebaseapp.com",
@@ -27,3 +33,4 @@ firebase.initializeApp(firebaseConfig);
       // Clear the barcode input field
       barcodeInput.value = "";
     });
+  
