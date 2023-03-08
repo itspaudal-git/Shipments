@@ -17,22 +17,7 @@ const firebaseConfig = {
 };
 // initialize firebase
 firebase.initializeApp(firebaseConfig);
-    // Reference the database to Scanned
-    var scannedRef = firebase.database().ref("Data");
-    // Get the submit button and barcode input field
-    var submitButton = document.getElementById("barcode-submit");
-    var barcodeInput = document.getElementById("barcode");
-    // Add a click event listener to the submit button
-    submitButton.addEventListener("click", function() {
-      // Get the value of the barcode input field
-      var barcodeValue = barcodeInput.value;
-      // Save the barcode value to the database
-      scannedRef.push({
-        "Tracking Numbers": barcodeValue
-      });
-      // Clear the barcode input field
-      barcodeInput.value = "";
-    });
+
 
 // Set Data for Term
 var database = firebase.database();

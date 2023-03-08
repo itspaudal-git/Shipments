@@ -13,26 +13,8 @@ firebase.database().ref('Data').on('value', function(snapshot) {
   // Use the global variable in the event listener
   const shipmentDataDiv = document.getElementById("shipment-data");
 
-  const shipmentDataSelect = document.getElementById("shipment-data-select");
-  shipmentDataSelect.addEventListener("change", function() {
-    if (shipmentDataSelect.value === "all-shipments") {
-      var tableHTML = '';
-      shipmentData.forEach(function(item) {
-        tableHTML += '<tr>' +
-                     '<td>' + item.Carrier + '</td>' +
-                     '<td>' + item['Tracking_Numbers'] +
-                     '<td>' + item.Date + '</td>' +
-                     '<td>' + item.Facility + '</td>' +
-                     '<td>' + item.Cycle + '</td>' +
-                     '<td>' + item.Term + '</td>' +
-                     '</tr>';
-      });
-      shipmentDataDiv.innerHTML = '<table><thead><tr><th>Carrier</th><th>Tracking_Numbers</th><th>Date</th><th>Facility</th><th>Cycle</th><th>Term</th></tr></thead><tbody>' + tableHTML + '</tbody></table>';
-    } else {
-      shipmentDataDiv.innerHTML = "";
-    }
-  });
 
+  
   // Add event listeners to the select elements
   locationSelectElement.addEventListener('change', populateTable);
   termSelectElement.addEventListener('change', populateTable);
@@ -66,5 +48,8 @@ firebase.database().ref('Data').on('value', function(snapshot) {
 
     // Display the table in the shipment-data element
     shipmentDataDiv.innerHTML = '<table><thead><tr><th>Carrier</th><th>Tracking_Numbers</th><th>Date</th><th>Facility</th><th>Cycle</th><th>Term</th></tr></thead><tbody>' + tableHTML + '</tbody></table>';
+    // Display the count in the total span element
+    var totalCount = filteredData.length;
+    document.getElementById("total").innerHTML = totalCount;
   }
 });
