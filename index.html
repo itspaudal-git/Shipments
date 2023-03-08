@@ -16,7 +16,11 @@
       <label>Scanned:</label>
       <span id="scanned"></span>
     </div>
-    <button id="shipment-data-button">View Shipment Data</button>
+    <select id="shipment-data-select">
+      <option value="all-shipments">All Shipments</option>
+      <option value="scanned">Scanned</option>
+      <option value="unscanned">Unscanned</option>
+    </select>
     <div id="shipment-data"></div>
   </div>
   <div class="form-group">
@@ -39,6 +43,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js"></script>
 <script src="./app.js"></script>
-<script src="./query_select.js"></script>
+<script src="./all_shipments.js"></script>
 <script type="module" src="./app.js"></script>
-
+</html>
