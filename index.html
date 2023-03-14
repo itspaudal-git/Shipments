@@ -1,49 +1,80 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Tovala</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="container">
-    <h1>Tovala</h1>
-    <label for="Tracking Numbers">Scan Barcode:</label>
-    <input type="text" id="barcode" name="barcode">
-    <button type="submit" id="barcode-submit">Submit</button>
-    <div class="labels">
-      <label>Total:</label>
-      <span id="total"></span>
-      <label>Scanned:</label>
-      <span id="scanned"></span>
+  <head>
+    <title id="tab-title">Tovala</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+  </head>
+  <body>
+    <div id="success-message"></div>
+    <div id="error-message"></div>
+    <div class="container">
+      <h1>Tovala</h1>
+      <label for="Tracking Numbers">Scan Barcode:</label>
+      <input type="text" id="barcode" name="barcode">
+
+      <div class="labels">
+        <div class="label-container">
+          <label>Total Shipments</label>
+          <span id="total"></span>
+        </div>
+        <div class="label-container">
+          <label>Total Scanned</label>
+          <span id="scanned"></span>
+        </div>
+      </div>
+      
+      
+      <div id="shipment-data"></div>
     </div>
-    <select id="shipment-data-select">
-      <option value="all-shipments">All Shipments</option>
-      <option value="scanned">Scanned</option>
-      <option value="unscanned">Unscanned</option>
-    </select>
-    <div id="shipment-data"></div>
-  </div>
-  <div class="form-group">
-    <label>Location:</label>
-    <select id="text" name="text">
-    </select>
-  </div>
-  <div class="form-group">
-    <label>Term:</label>
-    <select id="Numbers" name="Numbers">
-    </select>
-  </div>
-  
-  <div class="form-group">
-    <label>Ship Date:</label>
-    <select id="date" name="date"></select>
-  </div>
-</body>  
-<script src="https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js"></script>
-<script src="./app.js"></script>
-<script src="./all_shipments.js"></script>
-<script src="./scanned.js"></script>
-<script type="module" src="./app.js"></script>
+    
+    <div class="delete-btn-container">
+      <div class="form-group">
+      </div>
+      <label>Delete Files:</label>
+      <button type="button" onclick="deleteDuplicates()">Delete Duplicate Files</button>
+    </div>
+    
+    <div class="upload-btn-container">
+      <label for="file">Upload Files:</label>
+      <div class="file-input-container">
+        <input type="file" id="file" name="file">
+      </div>
+      <button type="button" onclick="uploadFile()">Upload File</button>
+    </div>
+    
+    <div class="select-btn-container ">
+      <label>Location:</label>
+      <select id="text" name="text"></select>
+      <label>Term:</label>
+      <select id="Numbers" name="Numbers"></select>
+      <label>Ship Date:</label>
+      <select id="date" name="date"></select>
+
+    </div>
+    <script>
+      var tabTitle = document.getElementById('tab-title');
+      var locationSelect = document.getElementById('text');
+      var barcodeInput = document.getElementById('barcode');
+      locationSelect.addEventListener('change', function() {
+        updateTabTitle();
+      });
+      barcodeInput.addEventListener('input', function() {
+        updateTabTitle();
+      });
+      function updateTabTitle() {
+        var locationText = locationSelect.value;
+        var barcodeText = barcodeInput.value;
+        tabTitle.innerText = locationText + ' - Scanning ' + barcodeText;
+      }
+    </script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js"></script> -->
+    <script src="./app.js"></script>
+    <script src="./all_shipments.js"></script>
+    <script src="./scanned.js"></script>
+    <script src="./select_shipments.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </body>
 </html>

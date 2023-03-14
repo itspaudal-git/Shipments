@@ -1,3 +1,9 @@
+#barcode {
+	height: 80px;
+  }
+  
+
+
 .container {
 	margin: 0 auto;
 	max-width: 500px;
@@ -40,8 +46,9 @@ input[type=text] {
 }
 
 .labels span {
-	font-size: 1.5em;
-}
+	font-size: 1.5em; 
+ }
+
 
 form {
 	display: flex;
@@ -96,9 +103,128 @@ button[type=submit]:hover {
 	background-color: #3e8e41;
 }
 #shipment-data {
-	float: right;
-	padding: 10px;
-	width: 1000px; 
-	
+	position: fixed;
+	top: 35%;
+	left: 3%;
+	padding: 20px;
+	width: 20px; 
+}
+
+table {
+	border-collapse: collapse;
+	width: 60%;
+	margin-top: 20px; /* add margin to separate the table from the previous elements */
+}
+
+th, td {
+	text-align: left;
+	padding: 12px 46px; /* increase the padding to add more space between elements */
+}
+
+th {
+	background-color: #f2f2f2;
+}
+
+td {
+	border-bottom: 1px solid #ddd;
+	text-align: center;
+}
+
+td:first-child {
+	width: 10em;
+}
+
+td:nth-child(2), 
+td:nth-child(3), 
+td:nth-child(4), 
+td:nth-child(5) {
+	width: 10em;
+}
+
+  .file-input-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-bottom: 3px;
   }
+  
+  .file-input-container input[type="file"] {
+	margin-right: 20px;
+  }
+
+  
+  #total, #scanned {
+	display: inline-block;
+	margin: 0 10px 4px 0 !important;
+  }
+  #pie-chart {
+	border: 1px solid #ccc;
+	border-radius: 5px;
+  }
+  #success-message {
+	position: fixed;
+	top: 22%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 25%; /* Decreased width */
+	height: 15%;
+	padding: 1rem; /* Decreased padding */
+	background-color: #4CAF50;
+	color: white;
+	text-align: center;
+	font-size: 2rem;
+	border-radius: 5px;
+	display: none;
+	z-index: 1000;
+  
+	/* Add these lines to center the text vertically */
+	align-items: center;
+	justify-content: center;
+  }
+  #error-message {
+	position: fixed;
+	top: 22%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 25%; /* Decreased width */
+	height: 15%;
+	padding: 1rem; /* Decreased padding */
+	background-color: #ff6b81; /* Pink-red background color */
+	color: white;
+	text-align: center;
+	font-size: 2rem;
+	border-radius: 5px;
+	display: none;
+	z-index: 1000;
+  
+	/* Add these lines to center the text vertically */
+	align-items: center;
+	justify-content: center;
+  }
+  .delete-btn-container {
+	position: fixed;
+	top: 50px;
+	right: 110px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+  }
+  .upload-btn-container {
+	position: fixed;
+	top: 70px;
+	right: 210px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+  }
+  .select-btn-container {
+	position: fixed;
+	top: 70px;
+	left: 210px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+  }
+  
+  /* Add other CSS rules as they are */
   

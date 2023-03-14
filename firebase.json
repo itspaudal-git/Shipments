@@ -15,15 +15,19 @@
         "Facility": "Chicago",
         "Term": 322,
         "Tracking_Numbers" : "630783633872"
+      },
+      "id_3": {
+        "Carrier": "Ontract",
+        "Cycle": 2,
+        "Date": "3/4/2002",
+        "Facility": "Chicago",
+        "Term": 322,
+        "Tracking_Numbers" : "430783633872"
       }
     },
     "Scanned": {
       "scanned_1": {
         "Tracking_Numbers": "630783633871",
-        "Date" : "3/4/2002"
-      },
-      "scanned_2": {
-        "Tracking_Numbers": "630783633872",
         "Date" : "3/4/2002"
       }
     }

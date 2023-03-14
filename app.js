@@ -1,10 +1,4 @@
-import('./module.js')
-.then(module => {
-  // Use the imported module here
-})
-.catch(error => {
-  // Handle the error here
-});  
+ 
 const firebaseConfig = {
   apiKey: "AIzaSyBvjBF8oP9hhaorrsLU8pr2prCAmS7eXmg",
   authDomain: "shipments-169d4.firebaseapp.com",
@@ -22,26 +16,35 @@ firebase.initializeApp(firebaseConfig);
 // Set Data for Term
 var database = firebase.database();
 
+var barcodeInput = document.getElementById("barcode");
 var termSelectElement = document.getElementById('Numbers');
+var locationSelectElement = document.getElementById('text');
+var dateSelectElement = document.getElementById('date');
+
+// Add event listeners to the dropdown menus
 termSelectElement.addEventListener('change', function() {
   var selectedTerm = termSelectElement.value;
-  console.log(selectedTerm); // should output the selected value, such as "322"
+  console.log(selectedTerm);
   document.getElementById('selectedTerm').innerHTML = selectedTerm;
 });
 
-var locationSelectElement = document.getElementById('text');
 locationSelectElement.addEventListener('change', function() {
   var selectedLocation = locationSelectElement.value;
-  console.log(selectedLocation); // should output the selected value, such as "Saltlake"
+  console.log(selectedLocation);
   document.getElementById('selectedLocation').innerHTML = selectedLocation;
 });
 
-var dateSelectElement = document.getElementById('date');
 dateSelectElement.addEventListener('change', function() {
   var selecteddate = dateSelectElement.value;
-  console.log(selecteddate); // should output the selected value, such as "3/4/2023"
+  console.log(selecteddate);
   document.getElementById('selecteddate').innerHTML = selecteddate;
 });
+
+// Defer the selection of the barcode input field
+setTimeout(function() {
+  barcodeInput.select();
+}, 0);
+
 
 // Retrieve the list of facilities from Firebase, ordered by 'Facility' value
 firebase.database().ref('Data').on('value', function(snapshot) {
@@ -108,8 +111,55 @@ firebase.database().ref('Data').on('value', function(snapshot) {
   });
 });
 
+function deleteDuplicates() {
+  // Define the correct password
+  var correctPassword = "tovala";
 
+  // Ask the user for the password
+  var inputPassword = prompt("Please enter the password:");
 
+  // Check if the input password is correct
+  if (inputPassword === correctPassword) {
+    // Get a reference to the Data node in the Firebase database
+    var dataRef = firebase.database().ref("Data");
 
+    // Query the data in the Firebase database
+    dataRef.once("value", function(snapshot) {
+      // Create an empty object to store tracking numbers and their keys
+      var trackingNumbers = {};
 
+      // Loop through the data and store tracking numbers and keys in the trackingNumbers object
+      snapshot.forEach(function(childSnapshot) {
+        var key = childSnapshot.key;
+        var trackingNumber = childSnapshot.val().Tracking_Numbers;
+
+        // If the tracking number is not in the object, add it with the key as a value
+        if (!trackingNumbers.hasOwnProperty(trackingNumber)) {
+          trackingNumbers[trackingNumber] = [key];
+        } else {
+          // If the tracking number is already in the object, push the new key into the array of keys
+          trackingNumbers[trackingNumber].push(key);
+        }
+      });
+
+      // Loop through the trackingNumbers object and delete duplicates
+      for (var trackingNumber in trackingNumbers) {
+        var keys = trackingNumbers[trackingNumber];
+        if (keys.length > 1) {
+          // If there are more than one keys for the same tracking number, delete all but the first one
+          for (var i = 1; i < keys.length; i++) {
+            dataRef.child(keys[i]).remove();
+          }
+        }
+      }
+
+      // Show a success message after deleting duplicates
+      alert("Duplicate entries have been deleted.");
+    });
+  } else {
+    // Show an error message if the password is incorrect
+    alert("Incorrect password. Please try again.");
+  }
+}
+window.deleteDuplicates = deleteDuplicates;
 
