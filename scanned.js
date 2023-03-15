@@ -45,7 +45,7 @@ function resetIdleTimer() {
   clearTimeout(idleTimeout);
   idleTimeout = setTimeout(function() {
     barcodeInput.select();
-  }, 5000);
+  }, 1000);
 }
 
 // Wait for the page to finish loading, then select the barcode input field

@@ -3,6 +3,7 @@
   <head>
     <title id="tab-title">Tovala</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="chart.css">
     <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
   </head>
   <body>
@@ -22,6 +23,9 @@
           <label>Total Scanned</label>
           <span id="scanned"></span>
         </div>
+        <div class="label-container">
+          <span id="percent"></span>
+        </div>        
       </div>
       
       
@@ -50,31 +54,14 @@
       <select id="Numbers" name="Numbers"></select>
       <label>Ship Date:</label>
       <select id="date" name="date"></select>
-
-    </div>
-    <script>
-      var tabTitle = document.getElementById('tab-title');
-      var locationSelect = document.getElementById('text');
-      var barcodeInput = document.getElementById('barcode');
-      locationSelect.addEventListener('change', function() {
-        updateTabTitle();
-      });
-      barcodeInput.addEventListener('input', function() {
-        updateTabTitle();
-      });
-      function updateTabTitle() {
-        var locationText = locationSelect.value;
-        var barcodeText = barcodeInput.value;
-        tabTitle.innerText = locationText + ' - Scanning ' + barcodeText;
-      }
-    </script>
-    <!-- <script src="https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
-    <!-- <script src="https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js"></script> -->
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1/firebase.js"></script>
     <script src="./app.js"></script>
     <script src="./all_shipments.js"></script>
     <script src="./scanned.js"></script>
     <script src="./select_shipments.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./chart.js"></script>
   </body>
+
 </html>
