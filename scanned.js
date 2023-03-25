@@ -16,18 +16,21 @@ var isSubmittingBarcode = false;
 
 barcodeInput.addEventListener("keyup", function(event) {
   
-
   // Check if the Enter key was pressed
   if (event.keyCode === 13) {
     // Get the value of the barcode input field
     var barcodeValue = barcodeInput.value.replace(/\s/g, "");
 
-    // Assuming the FedEx barcode has a fixed length of 34 characters
-    if (barcodeValue.length === 34) {
+    // Determine the length of the barcode
+    if (barcodeValue.length === 12 || barcodeValue.length === 19 || barcodeValue.length === 18) {
+      // Use entire barcode
+    } else if (barcodeValue.length === 34) {
       // Remove the first 22 digits for FedEx barcodes
       barcodeValue = barcodeValue.substring(22);
     } else {
-      // Handle other barcodes, if necessary
+      // Handle other barcodes
+      barcodeInput.value = "";
+      return;
     }
 
     // Barcode was scanned, submit it automatically
@@ -37,6 +40,7 @@ barcodeInput.addEventListener("keyup", function(event) {
   // Reset the idle timer when the user interacts with the page
   resetIdleTimer();
 });
+
 
 
 // Set an idle timeout to automatically select the barcode input field
@@ -54,6 +58,10 @@ window.onload = function() {
   resetIdleTimer();
 };
 
+function playAudio(audioFileName) {
+  var audio = new Audio("audio/" + audioFileName);
+  audio.play();
+}
 
 
 function submitBarcodeValue(barcodeValue) {
@@ -74,6 +82,7 @@ function submitBarcodeValue(barcodeValue) {
           // Barcode has already been scanned, display error message
           errorMessage.innerHTML = "Duplicate Scan";
           errorMessage.style.display = "block";
+          playAudio("duplicate.mp3");
 
           // Hide the error message after 3 seconds
           setTimeout(function() {
@@ -98,6 +107,7 @@ function submitBarcodeValue(barcodeValue) {
               // Success message
               successMessage.innerHTML = "Scanned Successful";
               successMessage.style.display = "block";
+              playAudio("beep.mp3");
 
               // Hide the success message after 3 seconds
               setTimeout(function() {
@@ -113,6 +123,7 @@ function submitBarcodeValue(barcodeValue) {
       // Barcode does not exist in the shipment data, display error message
       errorMessage.innerHTML = "Barcode not found";
       errorMessage.style.display = "block";
+      playAudio("notfound.mp3");
 
       // Hide the error message after 3 seconds
       setTimeout(function() {
@@ -122,7 +133,7 @@ function submitBarcodeValue(barcodeValue) {
       // Clear the barcode input field after 3 seconds
       setTimeout(function() {
         barcodeInput.value = "";
-      }, 300);
+      }, 100);
 
       // Reset the isSubmittingBarcode flag
       isSubmittingBarcode = false;
@@ -162,6 +173,8 @@ scannedRef.on("value", function(snapshot) {
   // Update the #scanned element with the count
   scannedElement.innerHTML = count;
 });
+
+
 function uploadFile() {
   // Get the selected file
   var file = document.getElementById("file").files[0];
@@ -199,10 +212,17 @@ function uploadFile() {
       }
     }
 
-    // Loop through the remaining rows and upload each row to the database
-    for (var i = 1; i < rows.length; i++) {
-      var row = rows[i].split(",");
-            
+  // Loop through the remaining rows and upload each row to the database
+  for (var i = 1; i < rows.length; i++) {
+    var row = rows[i].split(",");
+    
+    // Check if the row is not empty
+    if (row.length > 1 || (row.length === 1 && row[0].trim() !== '')) {
+      // If the row has fewer columns than the header, fill the missing values with empty strings
+      while (row.length < headers.length) {
+        row.push('');
+      }
+      
       // Create an object with properties matching the header names
       var item = {};
       for (var j = 0; j < headers.length; j++) {
@@ -211,11 +231,35 @@ function uploadFile() {
       
       // Upload the item to the database
       firebase.database().ref("Data").push(item);
+    } else {
+      console.error('Skipped empty row/column ' + i);
     }
+  }
 
-    alert("File uploaded successfully!");
-    document.getElementById("file").value = "";
-  };
+
+
+      // Show the progress container and dim overlay
+      var uploadProgressContainer = document.getElementById("upload-progress-container");
+      var uploadProgress = document.getElementById("upload-progress");
+      var uploadProgressPercent = document.getElementById("upload-progress-percent");
+      uploadProgressContainer.style.display = "block";
+      document.querySelector(".dim-overlay").style.display = "block";
+
+      // Simulate upload progress
+      var progress = 0;
+      var progressInterval = setInterval(function() {
+        progress += 10;
+        if (progress > 100) {
+          clearInterval(progressInterval);
+          uploadProgressContainer.style.display = "none";
+          document.querySelector(".dim-overlay").style.display = "none";
+          document.getElementById("file").value = "";
+        } else {
+          uploadProgress.value = progress;
+          uploadProgressPercent.textContent = progress + "%";
+        }
+      }, 500);
+    };
 
   // Read the selected file as text
   reader.readAsText(file);

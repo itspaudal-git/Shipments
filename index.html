@@ -3,15 +3,47 @@
   <head>
     <title id="tab-title">Tovala</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="chart.css">
     <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
   </head>
   <body>
+    <div class="dim-overlay"></div>
+    <div id="upload-progress-container">
+      <label>Upload progress:</label>
+      <progress id="upload-progress" value="0" max="100"></progress>
+      <span id="upload-progress-percent">0%</span>
+    </div>
+    
+    <div class="top-row">
+      <div class="select-btn-container">
+        <label>Location:</label>
+        <select id="text" name="text"></select>
+        <label>Term:</label>
+        <select id="Numbers" name="Numbers"></select>
+        <label>Ship Date:</label>
+        <select id="date" name="date"></select>
+      </div>
+    </div>
+    <div class="top-rowright">
+      <div class="delete-upload-container">
+        <div class="upload-btn-container">
+          <label for="file">Upload Files:</label>
+          <div class="file-input-container">
+            <input type="file" id="file" name="file">
+          </div>
+          <button type="button" onclick="uploadFile()">Upload File</button>
+        </div>
+        <div class="delete-btn-container">
+          <label>Delete Files:</label>
+          <button type="button" onclick="deleteDuplicates()">Delete Duplicate Files</button>
+        </div>
+      </div>
+    </div>
+        
     <div id="success-message"></div>
     <div id="error-message"></div>
+
     <div class="container">
       <h1>Tovala</h1>
-      <label for="Tracking Numbers">Scan Barcode:</label>
       <input type="text" id="barcode" name="barcode">
 
       <div class="labels">
@@ -20,48 +52,31 @@
           <span id="total"></span>
         </div>
         <div class="label-container">
+          <span id="percent"></span>
+        </div>         
+        <div class="label-container">
           <label>Total Scanned</label>
           <span id="scanned"></span>
-        </div>
-        <div class="label-container">
-          <span id="percent"></span>
-        </div>        
+        </div>          
       </div>
+    </div>  
+      <div class="under-top-row-bottom">
+        <div id="shipment-data"></div>
+      </div>
+
       
       
-      <div id="shipment-data"></div>
-    </div>
+        
+      
+      
     
-    <div class="delete-btn-container">
-      <div class="form-group">
-      </div>
-      <label>Delete Files:</label>
-      <button type="button" onclick="deleteDuplicates()">Delete Duplicate Files</button>
-    </div>
-    
-    <div class="upload-btn-container">
-      <label for="file">Upload Files:</label>
-      <div class="file-input-container">
-        <input type="file" id="file" name="file">
-      </div>
-      <button type="button" onclick="uploadFile()">Upload File</button>
-    </div>
-    
-    <div class="select-btn-container ">
-      <label>Location:</label>
-      <select id="text" name="text"></select>
-      <label>Term:</label>
-      <select id="Numbers" name="Numbers"></select>
-      <label>Ship Date:</label>
-      <select id="date" name="date"></select>
-    
+        
     <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1/firebase.js"></script>
     <script src="./app.js"></script>
     <script src="./all_shipments.js"></script>
     <script src="./scanned.js"></script>
     <script src="./select_shipments.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="./chart.js"></script>
   </body>
 
 </html>

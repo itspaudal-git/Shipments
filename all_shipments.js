@@ -132,6 +132,6 @@ function updateScannedCount(filteredData) {
     var totalCount = filteredData.length;
     var percentage = (totalScanned / totalCount) * 100;
     var roundedPercentage = percentage.toFixed(0);
-    document.getElementById("percent").innerHTML = roundedPercentage + "%";
+    document.getElementById("percent").innerHTML = roundedPercentage + "% Completed";
   });
 }
