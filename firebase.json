@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
   "Data": {
     "id_1": {
       "Carrier": "Fedex",
@@ -39,39 +38,5 @@
       "**/.*",
       "**/node_modules/**"
     ]
-=======
-    "Data": {
-      "id_1": {
-        "Carrier": "Fedex",
-        "Cycle": 2,
-        "Date": "3/4/2002",
-        "Facility": "Chicago",
-        "Term": 322,
-        "Tracking_Numbers" : "630783633871"
-      },
-      "id_2": {
-        "Carrier": "Fedex",
-        "Cycle": 2,
-        "Date": "3/4/2002",
-        "Facility": "Chicago",
-        "Term": 322,
-        "Tracking_Numbers" : "630783633872"
-      },
-      "id_3": {
-        "Carrier": "Ontract",
-        "Cycle": 2,
-        "Date": "3/4/2002",
-        "Facility": "Chicago",
-        "Term": 322,
-        "Tracking_Numbers" : "430783633872"
-      }
-    },
-    "Scanned": {
-      "scanned_1": {
-        "Tracking_Numbers": "630783633871",
-        "Date" : "3/4/2002"
-      }
-    }
->>>>>>> parent of 255027d (live)
   }
-  
+}

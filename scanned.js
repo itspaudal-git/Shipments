@@ -15,14 +15,14 @@ var isSubmittingBarcode = false;
 
 
 barcodeInput.addEventListener("keyup", function(event) {
-  
+  console.log("Key code:", event.keyCode);
   // Check if the Enter key was pressed
   if (event.keyCode === 13) {
     // Get the value of the barcode input field
     var barcodeValue = barcodeInput.value.replace(/\s/g, "");
 
     // Determine the length of the barcode
-    if (barcodeValue.length === 12 || barcodeValue.length === 19 || barcodeValue.length === 18) {
+    if (barcodeValue.length === 17 ||barcodeValue.length === 12 || barcodeValue.length === 19 || barcodeValue.length === 18) {
       // Use entire barcode
     } else if (barcodeValue.length === 34) {
       // Remove the first 22 digits for FedEx barcodes
@@ -49,7 +49,7 @@ function resetIdleTimer() {
   clearTimeout(idleTimeout);
   idleTimeout = setTimeout(function() {
     barcodeInput.select();
-  }, 5000);
+  }, 1000);
 }
 
 // Wait for the page to finish loading, then select the barcode input field

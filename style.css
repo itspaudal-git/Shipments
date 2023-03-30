@@ -113,7 +113,6 @@ body {
     width: 100%;
     max-width: 800px;
 
-<<<<<<< HEAD
   }
   
   th,
@@ -130,15 +129,6 @@ body {
     background-color: #f2f2f2;
   }
     
-=======
-.container {
-	margin: 0 auto;
-	max-width: 500px;
-	padding: 20px;
-	text-align: center;
-}
-
->>>>>>> parent of 255027d (live)
 h1 {
   font-size: 2.5rem;
   margin-bottom: 1.5rem;
@@ -156,7 +146,6 @@ input[type="text"] {
 }
 
 .labels {
-<<<<<<< HEAD
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -177,22 +166,6 @@ input[type="text"] {
     text-shadow: #058aff;
     font-style: oblique;
   }
-=======
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
-	margin-top: 20px;
-}
-
-.labels label {
-	font-size: 1.2em;
-}
-
-.labels span {
-	font-size: 1.5em; 
- }
->>>>>>> parent of 255027d (live)
 
 
 
@@ -240,55 +213,7 @@ select {
   margin-right: 0.5rem;
 }
 
-<<<<<<< HEAD
 
-=======
-th, td {
-	text-align: left;
-	padding: 12px 46px; /* increase the padding to add more space between elements */
-}
-
-th {
-	background-color: #f2f2f2;
-}
-
-td {
-	border-bottom: 1px solid #ddd;
-	text-align: center;
-}
-
-td:first-child {
-	width: 10em;
-}
-
-td:nth-child(2), 
-td:nth-child(3), 
-td:nth-child(4), 
-td:nth-child(5) {
-	width: 10em;
-}
-
-  .file-input-container {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	margin-bottom: 3px;
-  }
-  
-  .file-input-container input[type="file"] {
-	margin-right: 20px;
-  }
-
-  
-  #total, #scanned {
-	display: inline-block;
-	margin: 0 10px 4px 0 !important;
-  }
-  #pie-chart {
-	border: 1px solid #ccc;
-	border-radius: 5px;
-  }
->>>>>>> parent of 255027d (live)
   #success-message {
 	position: fixed;
 	top: 15%;
