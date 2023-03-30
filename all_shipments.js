@@ -54,13 +54,13 @@ function populateTable() {
     '<td>' + counts[0] + '</td>' +
     '<td>' + counts[1] + '</td>' +
     '<td>' + counts[2] + '</td>' +
-    '<td><a id="view-button" href="#" onclick="unScanneddata(\'' + selectedTerm + '\',\'' + selectedLocation + '\',\'' + selectedDate + '\',\'' + carrier + '\')">View</a></td>' +
+    '<td><a id="view-button" href="#" onclick="unScanneddata(\'' + selectedTerm + '\',\'' + selectedLocation + '\',\'' + selectedDate + '\')">View</a></td>' +
     '</tr>';
   });
 
   // Display the table in the shipment-data element
   const shipmentDataDiv = document.getElementById("shipment-data");
-  shipmentDataDiv.innerHTML = '<table><thead><tr><th>Carrier</th><th>Total</th><th>Scanned</th><th>Remaining</th><th>Unscanned</th></tr></thead><tbody>' + tableHTML + '</tbody></table>';
+  shipmentDataDiv.innerHTML = '<table><thead><tr><th>Carrier</th><th>Total</th><th>Scanned</th><th>Remaining</th></tr></thead><tbody>' + tableHTML + '</tbody></table>';
 
   // Display the count in the total span element
   var totalCount = filteredData.length;
@@ -127,11 +127,14 @@ function updateScannedCount(filteredData) {
     });
     // Update the #scanned element with the count
     scannedElement.innerHTML = totalScanned;
+<<<<<<< HEAD
 
     // Calculate and display the percentage
     var totalCount = filteredData.length;
     var percentage = (totalScanned / totalCount) * 100;
     var roundedPercentage = percentage.toFixed(0);
     document.getElementById("percent").innerHTML = roundedPercentage + "% Completed";
+=======
+>>>>>>> parent of 255027d (live)
   });
 }

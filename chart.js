@@ -1,19 +1,26 @@
-// Initialize total to 0
-var total = 0;
-// Set the initial value of total in the HTML
-document.getElementById("total").innerHTML = total;
 
-// Function to update the pie chart and percentages
-function updatePieChart(scanned, unscanned) {
-  // Calculate the percentages
-  var scannedPercentage = (scanned / total) * 100;
-  var unscannedPercentage = 100 - scannedPercentage;
+// Get the total and scanned values
+var total = parseInt(document.getElementById('total').textContent);
+var scanned = parseInt(document.getElementById('scanned').textContent);
+var unscanned = total - scanned;
+console.log('Unscanned:', unscanned);
 
-  // Update the pie chart data
-  chart.data.datasets[0].data = [scanned, unscanned];
-  chart.update();
-
-  // Update the percentages in the HTML
-  document.getElementById('scanned-percentage').textContent = Math.round(scannedPercentage) + '%';
-  document.getElementById('unscanned-percentage').textContent = Math.round(unscannedPercentage) + '%';
+// Create a pie chart with the total, scanned, and unscanned values
+var ctx = document.getElementById('pie-chart').getContext('2d');
+var chart = new Chart(ctx, {
+type: 'pie',
+data: {
+    labels: ['Scanned', 'Unscanned'],
+    datasets: [{
+    backgroundColor: ['#36A2EB', '#FFCE56', '#FF6384'],
+    data: [scanned, unscanned]
+    }]
 }
+});
+
+// Position the pie chart in the top right corner of the page
+var chartElement = document.getElementById('pie-chart');
+chartElement.style.position = 'fixed';
+chartElement.style.top = '15px';
+chartElement.style.right = '15px';
+
