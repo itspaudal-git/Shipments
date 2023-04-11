@@ -1,0 +1,72 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    background-image: url('https://source.unsplash.com/random/abstract');
+    background-size: cover;
+}
+
+.container {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    opacity: 90%;
+    text-align: center;
+}
+
+h1 {
+    margin: 0 0 30px;
+    text-align: center;
+    color: #444;
+    font-size: 2rem;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+input[type="date"],
+select {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    padding: 8px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+button {
+    display: inline-block;
+    background-color: #4285f4;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+button:hover {
+    background-color: #3276db;
+    }
+    
+    .status {
+    margin-top: 20px;
+    font-weight: bold;
+    }

@@ -6,14 +6,14 @@ var shipmentData;
 var scannedData = {}; // Define scannedData in the global scope
 var scannedRef = firebase.database().ref('Scanned');
 
-function unScanneddata(selectedTerm, selectedLocation, selectedDate) {
+function unScanneddata(selectedTerm, selectedLocation, selectedDate, selectedCarrier) {
   // Filter the shipment data for the selected carrier, term, location, and date
   var filteredData = shipmentData.filter(function(item) {
-    return item.Term === selectedTerm &&
-           item.Facility === selectedLocation &&
-           item.Date === selectedDate;
+    return (item.Facility === selectedLocation || selectedLocation === '') &&
+           (item.Term === selectedTerm || selectedTerm === '') &&
+           (item.Date === selectedDate || selectedDate === '') &&
+           (item.Carrier === selectedCarrier);
   });
-  
   // Get the scanned tracking numbers
   var scannedTrackingNumbers = new Set(Object.values(scannedData).map(function(item) {
     return item.Tracking_Numbers;
@@ -99,7 +99,45 @@ var tableStyles = `
     background-color: #f8f8f8;
   }
 `;
-
+function downloadTable() {
+  // Get the table element
+  var table = document.querySelector('.styled-table');
+  
+  // Get the table headers
+  var headers = [];
+  var headerElements = table.querySelectorAll('th');
+  headerElements.forEach(function(header) {
+    headers.push(header.textContent.trim());
+  });
+  
+  // Get the table rows
+  var rows = [];
+  var rowElements = table.querySelectorAll('tbody tr');
+  rowElements.forEach(function(row) {
+    var rowData = [];
+    var cellElements = row.querySelectorAll('td');
+    cellElements.forEach(function(cell) {
+      rowData.push(cell.textContent.trim());
+    });
+    rows.push(rowData);
+  });
+  
+  // Create the CSV string
+  var csv = headers.join(',') + '\n';
+  rows.forEach(function(row) {
+    csv += row.join(',') + '\n';
+  });
+  
+  // Trigger a download of the CSV file
+  var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  var link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = 'unscanned_shipments.csv';
+  link.style.display = 'none';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
 // Open the table in a new window
 var win = window.open("", "_blank");
 win.document.write('<html><head><title>Unscanned Shipments for ' + '</title><style>' + tableStyles + '</style></head><body></body></html>');
@@ -152,3 +190,24 @@ firebase.database().ref('Data').on('value', function(snapshot) {
 firebase.database().ref('Scanned').on('value', function(snapshot) {
   scannedData = snapshot.val();
 });
+// // Define an array of background image URLs
+// const bgImages = [
+//   'https://source.unsplash.com/random?abstract',
+//   'https://source.unsplash.com/random?nature',
+//   'https://source.unsplash.com/random?city',
+//   'https://source.unsplash.com/random?technology'
+// ];
+
+// // Get a reference to the body element
+// const body = document.querySelector('body');
+
+// // Set an initial background image
+// body.style.backgroundImage = `url(${bgImages[0]})`;
+
+// // Set a timer to change the background image every 5 seconds
+// setInterval(() => {
+//   // Get a random index from the bgImages array
+//   const randomIndex = Math.floor(Math.random() * bgImages.length);
+//   // Set the background image to the random URL
+//   body.style.backgroundImage = `url(${bgImages[randomIndex]})`;
+// }, 5000);

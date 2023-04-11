@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="master.css">
+    <title>Upload CSV to Firebase</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Upload Master Tracking</h1>
+        <div class="form-group">
+            <label for="masterCsvFile">Upload Master Tracking CSV file:</label>
+            <div class="file-input">
+                <input type="file" id="masterCsvFile" name="masterCsvFile" accept=".csv">
+                <button type="button" class="choose-file2-btn">Choose File</button>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="masterTerm">Term:</label>
+            <input type="text" id="masterTerm" name="masterTerm">
+        </div>
+        <div class="form-group">
+            <label for="selectFacility">Select Facility:</label>
+            <select id="selectFacility" name="selectFacility">
+                <option value="chicago">Chicago</option>
+                <option value="saltalke">Saltlake</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="selectCycle">Select Cycle:</label>
+            <select id="selectCycle" name="selectCycle">
+                <option value="1">1</option>
+                <option value="2">2</option>
+            </select>
+        </div>
+        <button id="uploadMasterBtn">Upload</button>
+    </div>
+
+
+
+
+    
+    <div class="container">
+        <h1>Upload Meal Configuration</h1>
+        <div class="form-group">
+            <label for="mealCsvFile">Upload Meal Configuration CSV file:</label>
+            <div class="file-input">
+                <input type="file" id="mealCsvFile" name="mealCsvFile" accept=".csv">
+                <button type="button" class="choose-file-btn">Choose File</button>
+            </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="mealTerm">Term:</label>
+          <input type="text" id="mealTerm" name="mealTerm">
+        </div>
+        <div class="form-group">
+          <label for="selectFacility2">Select Facility:</label>
+          <select id="selectFacility2" name="selectFacility2">
+            <option value="chicago">Chicago</option>
+            <option value="saltlake">Saltlake</option>
+          </select>
+        </div>
+        <button id="uploadMealBtn">Upload</button>
+      </div>
+      <div class="container">
+        <h1>Upload Tracking Numbers</h1>
+        <div class="form-group">
+            <label for="trackingCsvFile">Upload Tracking Numbers CSV file:</label>
+            <div class="file-input">
+                <input type="file" id="trackingCsvFile" name="trackingCsvFile" accept=".csv,.txt" style="display:none;">
+                <button type="button" class="choose-file-btn-tracking">Choose File</button>
+            </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="mealTerm3">Term:</label>
+          <input type="text" id="mealTerm3" name="mealTerm3">
+        </div>
+        <div class="form-group">
+          <label for="selectFacility3">Select Facility:</label>
+          <select id="selectFacility3" name="selectFacility3">
+            <option value="chicago">Chicago</option>
+            <option value="saltlake">Saltlake</option>
+          </select>
+        </div>
+        <button id="uploadtrackingBtn">Upload</button>
+      </div>  
+      
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>    
+    <script src="app.js"></script>
+    <script src="master.js"></script>
+    <script src="tracking.js"></script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Records</title>
+    <link rel="stylesheet" href="delete.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Delete Records</h1>
+        <form id="delete-form">
+            <div class="form-group">
+                <label for="term">Term:</label>
+                <input type="text" id="term" name="term">
+            </div>
+            <div class="form-group">
+                <label for="shipdate">Shipdate:</label>
+                <input type="date" id="shipdate" name="shipdate">
+            </div>
+            <div class="form-group">
+                <label for="facility">Facility:</label>
+                <select id="facility" name="facility">
+                    <option value="">Select a facility</option>
+                    <option value="Chicago">Chicago</option>
+                    <option value="Saltlake">Saltlake</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="cycle">Cycle:</label>
+                <select id="cycle" name="cycle">
+                    <option value="">Select a cycle</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="carrier">Carrier:</label>
+                <select id="carrier" name="carrier">
+                    <option value="">Select a carrier</option>
+                    <option value="Fedex LEW">Fedex LEW</option>
+                    <option value="Fedex OCA">Fedex OCA</option>
+                    <option value="Fedex OLB">Fedex OLB</option>
+                    <option value="Fedex CHI">Fedex CHI</option>
+                    <option value="Fedex Express">Fedex Express</option>
+                    <option value="Fedex Air">Fedex Air</option>
+                    <option value="UDS">UDS</option>
+                    <option value="UPS">UPS</option>
+                    <option value="Veho">Veho</option>
+                    <option value="On Tract">On Tract</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="meal">Meal:</label>
+                <select id="meal" name="meal">
+                    <option value="">Select a meal</option>
+                    <option value="4">4</option>
+                    <option value="6">6</option>
+                    <option value="8">8</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="config">Config:</label>
+                <select id="config" name="config">
+                    <option value="">Select a config</option>
+                    <option value="15TB">15TB</option>
+                    <option value="1TB">1TB</option>
+                    <option value="1B">1B</option>
+                    <option value="05B">05B</option>
+                    
+                </select>
+            </div>
+            <!-- Add the rest of the form elements here -->
+            <button type="submit" id="delete-btn">Delete</button>
+        </form>
+        <div id="status" class="status"></div>
+        <div class="container">
+            <h1>Scan Barcode for deletion</h1>
+            <input type="text" id="barcode" name="barcode">
+            <div class="delete-btn-container2">
+              <label>Scanning a tracking number triggers its automatic deletion</label>
+              <button type="button" onclick="deleteFiles()">Delete Files</button>
+            </div>
+            <div id="total-deleted-count"></div> <!-- Add this div to display the total count of deleted barcodes -->
+          </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="app.js"></script>
+    <script src="admin.js"></script>
+    <script src="delete.js"></script>
+</body>
+</html>

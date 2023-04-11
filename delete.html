@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title id="tab-title">Tovala</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+  </head>
+  <body>
+
+    <div class="container">
+      <h1>Scan Barcode for deletion</h1>
+      <input type="text" id="barcode" name="barcode">
+      <div class="delete-btn-container2">
+        <label>Scanning a tracking number triggers its automatic deletion</label>
+        <button type="button" onclick="deleteFiles()">Delete Files</button>
+      </div>
+      <div id="total-deleted-count"></div> <!-- Add this div to display the total count of deleted barcodes -->
+    </div>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1/firebase.js"></script>
+    <script src="./app.js"></script>
+    <script src="./delete.js"></script>
+  </body>
+
+</html>

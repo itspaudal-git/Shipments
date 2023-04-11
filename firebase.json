@@ -18,25 +18,131 @@
     },
     "id_3": {
       "Carrier": "Ontract",
-      "Cycle": 2,
+      "Cycle": "2",
       "Date": "3/4/2002",
       "Facility": "Chicago",
       "Term": 322,
       "Tracking_Numbers": "430783633872"
     }
   },
-  "Scanned": {
-    "scanned_1": {
-      "Tracking_Numbers": "630783633871",
-      "Date": "3/4/2002"
+  "Meal Configuration": {
+    "id_1": {
+      "Config": "Open Garnish",
+      "Cycle": "2",
+      "Location": "pershing",
+      "Meal + Title": "Eggplant Parm Lasagna - Dual Serving",
+      "Meal No": "100",
+      "Qty": "1107",
+      "Term": "327"
     }
   },
-  "hosting": {
-    "public": "Y",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ]
+  "Master": {
+    "id_1": {
+      "Meal_Selection":"4,1,3,6",
+      "OrderfulfillmentId":"0afcc536-5aec-4fd8-b047-740057c4fa45",
+      "insulation_type":"1in white bottom ice only",
+      "phone":"8432311706",
+      "shipping_company":"FEDEX",
+      "shipping_origin":"olivebranch",
+      "shipping_zipcode":"70506",
+      "subscription_type":"4",
+      "userid":"965517",
+      "shipping_city":"Lafeyette",
+      "shipping_name": "Pau Dal",
+      "shipping_line1":"1630 Rue du Belier",
+      "shipping_line2":"Apt 2009",
+      "shipping_service":"1_DAY_GROUND",
+      "shipping_state":"LA",
+      "Term":"327",
+      "ShipDate":"4/12/2023",
+      "100": "1",
+      "200": "3",
+      "300": "2",
+      "400": "0",
+      "500": "0",
+      "600": "4",
+      "700": "2",
+      "800": "1",
+      "900": "0",
+      "1000": "0",
+      "1100": "2",
+      "1200": "2",
+      "1300": "2",
+      "1400": "2",
+      "1500": "2",
+      "1600": "1",
+      "1700": "2",
+      "1800": "0",
+      "1900": "0",
+      "2000": "2",
+      "2100": "0",
+      "2200": "2",
+      "2400": "0",
+      "2500": "2",
+      "2600": "2",
+      "2700": "2",
+      "2800": "2",
+      "2900": "2",
+      "3000": "2",
+      "3200": "2",
+      "3300": "2",
+      "3400": "2",
+      "3500": "2",
+      "3600": "2",
+      "5000": "2"
+      
+
+    }
   }
 }
+
+{
+  "Data": {
+    "id_1": {
+      "OrderfulfillmentId": "ae279d23-7638-4141-a14c-cd7cbd9d898b",
+      "userid ": "362939",
+      "ShipDate ": "3/4/2002",
+      "fc": "Chicago",
+      "Term": "322",
+      "Barcode ": "630784020117"
+    },
+    "id_2": {
+      "OrderfulfillmentId": "e4bf909f-9331-4921-b0a7-f558ddaf6a5d",
+      "userid ": "644904",
+      "ShipDate ": "3/4/2002",
+      "fc": "Chicago",
+      "Term": "322",
+      "Barcode ": "630784020128"
+    },
+    "id_3": {
+      "OrderfulfillmentId": "e55635b9-948b-4022-8b81-0a524275e9a0",
+      "userid ": "125249",
+      "ShipDate ": "3/4/2002",
+      "fc": "Chicago",
+      "Term": "322",
+      "Barcode ": "630784020139"
+    }
+  }
+}  
+
+{
+  "Data": {
+    "id_1": {
+      "04_08_2023 - 04_10_2023 858769507 1 Manual Report CAFE3621 Page: 1": "",
+      "fc": "Chicago",
+      "Term": "322",
+    },
+    "id_2": {
+      "04_08_2023 - 04_10_2023 858769507 1 Manual Report CAFE3621 Page: 1": "SHIP DATE   REFERENCES           TRACKING #            SHIP NOTIFY EMAIL 1                                Pkg Cust Fld 01",
+      "fc": "Chicago",
+      "Term": "322",
+    },
+    "id_3": {
+      "04_08_2023 - 04_10_2023 858769507 1 Manual Report CAFE3621 Page: 1
+      ": "04_08_2023 - 04_10_2023 858769507 1 Manual Report CAFE3621 Page: 1     ",
+      "fc": "Chicago",
+      "Term": "322",
+
+    }
+  }
+}  

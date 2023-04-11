@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="build.css">
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css"/>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- DataTables JavaScript -->
+    <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+    <title>Peggy</title>
+</head>
+<body>
+    <div class="container dashboard">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="facility">Facility:</label>
+                <select id="facility" name="facility">
+                    <option value="">Select a facility</option>
+                    <option value="Chicago">Chicago</option>
+                    <option value="Saltlake">Saltlake</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="selectTerm">Select Term:</label>
+                <input type="text" id="selectTerm" name="selectTerm">
+            </div>
+            <div class="form-group">
+                <label for="selectCycle">Select Cycle:</label>
+                <select id="selectCycle" name="selectCycle">
+                    <option value="">Combine</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="selectConfig">Exclude Configuration:</label>
+                <select id="selectConfig" name="selectConfig">
+                    <option value="">All</option>
+                    <option value="Open Garnish">Open Garnish</option>
+                    <option value="Short Boi">Short Boi</option>
+                    <option value="Drop Shelf">Drop Shelf</option>
+                </select>
+                <span id="excludedMeals"></span>
+            </div>
+        </div>
+        <table id="dashboardTable" class="display">
+            <thead>
+                <tr>
+                    <th>Carrier</th>
+                    <th>Origin</th>
+                    <th>Meal</th>
+                    <th>insulation</th>
+                    <th>Meal_Selection</th>
+                    <th>box_extras</th>
+                    <th>shipping_name</th>
+                    <th>Cycle</th>
+                </tr>
+            </thead>
+            <tbody id="dashboardTableBody">
+            </tbody>
+        </table>
+        <div class="button-container">
+            <button id="downloadCSV" onclick="downloadCSV()">Download CSV</button>
+            <button id="openGoogleSheets">Open in Google Sheets</button>
+        </div>
+        
+    </div>
+    
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>    
+    <script src="app.js"></script>
+    <script src="build.js"></script>
+</body>
+</html>

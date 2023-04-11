@@ -1,13 +1,13 @@
  
 const firebaseConfig = {
-  apiKey: "AIzaSyBvjBF8oP9hhaorrsLU8pr2prCAmS7eXmg",
-  authDomain: "shipments-169d4.firebaseapp.com",
-  databaseURL: "https://shipments-169d4-default-rtdb.firebaseio.com",
-  projectId: "shipments-169d4",
-  storageBucket: "shipments-169d4.appspot.com",
-  messagingSenderId: "500866362157",
-  appId: "1:500866362157:web:9a4ddf3a59173bfc7041a4",
-  measurementId: "G-Y3QBFBL0LB"
+  apiKey: "AIzaSyAEZp1re3bAhXyL752w0P6DAaa-kT1EqH0",
+  authDomain: "tovala-bol.firebaseapp.com",
+  databaseURL: "https://tovala-bol-default-rtdb.firebaseio.com",
+  projectId: "tovala-bol",
+  storageBucket: "tovala-bol.appspot.com",
+  messagingSenderId: "1022301720035",
+  appId: "1:1022301720035:web:945577bb5d84dc48a8a4d6",
+  measurementId: "G-MKBD69C3LG"
 };
 // initialize firebase
 firebase.initializeApp(firebaseConfig);
